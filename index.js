@@ -31,7 +31,6 @@ async function autoScroll(page) {
 
 (async () => {
   const browser = await puppeteer.launch();
-  
   const page = await browser.newPage();
   await page.setViewport({
     width: 1200,
