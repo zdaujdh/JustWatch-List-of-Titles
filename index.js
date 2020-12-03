@@ -38,7 +38,7 @@ async function autoScroll(page) {
     height: 5000,
   });
 
-  const contentTypes = ['movie'];
+  const contentTypes = ['movie', 'show'];
   const genres = ['act', 'ani', 'cmy', 'crm', 'doc', 'drm', 'eur', 'fml', 'fnt', 'hrr', 'hst', 'msc', 'rly', 'rma', 'scf', 'spt', 'trl', 'war', 'wsn'];
   const date = new Date();
   const thisYear = date.getFullYear();
