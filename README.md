@@ -6,4 +6,5 @@ Scrap list of titles streamed by Netflix Japan from justwatch.com using Puppetee
 
 ## Run
 `node index.js`
+
 That's it!
