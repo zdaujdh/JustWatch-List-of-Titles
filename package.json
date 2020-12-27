@@ -1,0 +1,23 @@
+{
+  "name": "netflix_list_of_titles",
+  "version": "1.0.0",
+  "description": "Scrape list of titles streamed by Netflix Japan from justwatch.com using Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apteryxf/netflix_list_of_titles.git"
+  },
+  "keywords": [
+    "'puppeteer'",
+    "'netflix'"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apteryxf/netflix_list_of_titles/issues"
+  },
+  "homepage": "https://github.com/apteryxf/netflix_list_of_titles#readme"
+}
