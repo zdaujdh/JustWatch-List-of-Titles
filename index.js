@@ -38,7 +38,27 @@ async function autoScroll(page) {
   });
 
   const contentTypes = ['movie', 'show'];
-  const genres = ['act', 'ani', 'cmy', 'crm', 'doc', 'drm', 'eur', 'fml', 'fnt', 'hrr', 'hst', 'msc', 'rly', 'rma', 'scf', 'spt', 'trl', 'war', 'wsn'];
+  const genres = [
+    'act',
+    'ani',
+    'cmy',
+    'crm',
+    'doc',
+    'drm',
+    'eur',
+    'fml',
+    'fnt',
+    'hrr',
+    'hst',
+    'msc',
+    'rly',
+    'rma',
+    'scf',
+    'spt',
+    'trl',
+    'war',
+    'wsn',
+  ];
   const date = new Date();
   const thisYear = date.getFullYear();
 
@@ -47,7 +67,9 @@ async function autoScroll(page) {
     for (let contentType of contentTypes) {
       for (let genre of genres) {
         await page.goto(
-          `https://www.justwatch.com/jp/動画配信サービス/netflix?content_type=${contentType}&genres=${genre}&release_year_from=${year}&release_year_until=${year}`
+          `https://www.justwatch.com/jp/動画配信サービス/netflix
+          ?content_type=${contentType}&genres=${genre}
+          &release_year_from=${year}&release_year_until=${year}`
         );
 
         await autoScroll(page);
@@ -60,6 +82,6 @@ async function autoScroll(page) {
   }
 
   fs.writeFileSync('./titles.txt', titles.join('\n') + '\n');
-    
+
   await browser.close();
 })();
