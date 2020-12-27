@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/apteryxf/netflix_list_of_titles/issues"
   },
-  "homepage": "https://github.com/apteryxf/netflix_list_of_titles#readme"
+  "homepage": "https://github.com/apteryxf/netflix_list_of_titles#readme",
+  "dependencies": {
+    "puppeteer": "^5.5.0"
+  }
 }
