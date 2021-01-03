@@ -1,20 +1,13 @@
-const { log } = require('console');
 const fs = require('fs');
 const puppeteer = require("puppeteer");
 
-function extractLinks() {
+function extractItems() {
   const links = document.querySelectorAll('.title-list-grid__item--link');
   let urls = [];
   for (let link of links) {
-    urls.push('https://www.justwatch.com' + link.getAttribute('href'));
+    urls.push(link.getAttribute('href'));
   }
   return urls;
-}
-
-function extactTitleTexts() {
-  const text = document.querySelector('.title-block h1').textContent;
-  console.log(text);
-  return text;
 }
 
 async function autoScroll(page) {
@@ -31,23 +24,20 @@ async function autoScroll(page) {
           clearInterval(timer);
           resolve();
         }
-      }, 500);
+      }, 1000);
     });
   });
 }
 
 (async () => {
-  const browser = await puppeteer.launch({headless: false});
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setViewport({
     width: 1200,
     height: 5000,
   });
 
-  const contentTypes = [
-    'movie',
-    'show'
-  ];
+  const contentTypes = ['movie', 'show'];
   const genres = [
     'act',
     'ani',
@@ -72,33 +62,26 @@ async function autoScroll(page) {
   const date = new Date();
   const thisYear = date.getFullYear();
 
-  let titleLinks = [];
-  for (let year = 2020; year <= 2020; year++) {
+  let titles = [];
+  for (let year = 1936; year <= thisYear; year++) {
     for (let contentType of contentTypes) {
       for (let genre of genres) {
         await page.goto(
-          `https://www.justwatch.com/jp/動画配信サービス/netflix?content_type=${contentType}&genres=${genre}&release_year_from=${year}&release_year_until=${year}`
+          `https://www.justwatch.com/jp/動画配信サービス/netflix
+          ?content_type=${contentType}&genres=${genre}
+          &release_year_from=${year}&release_year_until=${year}`
         );
 
         await autoScroll(page);
         console.log(year);
-        items = await page.evaluate(extractLinks);
+        items = await page.evaluate(extractItems);
         console.log(items);
-        titleLinks.push(items);
+        titles.push(items);
       }
     }
   }
 
-  let titles = [];
-  for (let titleLink of titleLinks) {
-    console.log(titleLink)
-    await page.goto('https://www.justwatch.com/jp/映画/modern-times')
-    await page.waitForSelector('.title-block')
-    let title = await page.evaluate(extactTitleTexts);
-    titles.push(title);
-  }
-
-  fs.writeFileSync('./titles.html', titles.join('\n') + '\n');
+  fs.writeFileSync('./titles.txt', titles.join('\n') + '\n');
 
   await browser.close();
 })();
