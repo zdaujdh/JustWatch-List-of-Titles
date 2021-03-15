@@ -12,4 +12,4 @@ jobs:
       - name: Event Information
         run: |
           echo "Event is '${{ github.event.action }}'"
-          echo "Message is '${{ github.event.client_payload.message }}'"
+          echo "Message is '${{ toJson(github.event.client_payload.message) }}'"
