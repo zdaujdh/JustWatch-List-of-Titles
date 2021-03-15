@@ -1,0 +1,15 @@
+name: test
+
+on:
+  repository_dispatch:
+    types: [dispatch]
+
+jobs:
+  dispatch-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Event Information
+        run: |
+          echo "Event is '${{ github.event.action }}'"
+          echo "Message is '${{ github.event.client_payload.message }}'"
