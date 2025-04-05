@@ -33,5 +33,9 @@ jobs:
           }
         continue-on-error: true
 
+      - name: Check 2
+        if: ${{ steps.check.outputs.changes != 'no-changes' }}
+        run: echo 'check 2'
+
       - name: Next Step 
         run: echo 'next step'
