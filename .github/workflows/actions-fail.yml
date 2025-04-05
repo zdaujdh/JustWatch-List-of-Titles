@@ -22,7 +22,7 @@ jobs:
           git diff --name-only origin/${{ github.base_ref }} | grep . || echo "changes=no-changes" >> $GITHUB_OUTPUT
 
       - name: Check exitting by code 1 fails entire job
-        if: ${{ steps.check.outputs.changes != no-changes }}
+        if: ${{ steps.check.outputs.changes != 'no-changes' }}
         run: |
           git diff --name-only origin/master -- index.js | grep . || {
             echo '::notice ::notice'
