@@ -12,10 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Fetch base branch
+        run: git fetch origin master
+
       - name: Check exitting by code 1 fails entire job
         run: |
-          echo 'exit 1, no continue-on-error set'
-          exit 1
+          git diff --name-only origin/master -- index.js | grep . || {
+            echo '::error ::exit 1, no continue-on-error set'
+            exit 1
+          }
 
       - name: Next Step 
         run: echo 'next step'
