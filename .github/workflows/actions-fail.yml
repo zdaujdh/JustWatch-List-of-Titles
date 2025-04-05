@@ -21,6 +21,7 @@ jobs:
             echo '::notice ::notice'
             echo '::warning ::exit 1, no continue-on-error set'
             echo '::error ::no diff index.js'
+            echo "Changed files: ${{ github.event.pull_request.changed_files }}"
             exit 1
           }
         continue-on-error: true
