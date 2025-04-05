@@ -1,5 +1,6 @@
 const fs = require('fs');
 const puppeteer = require("puppeteer");
+const HOGE = 'hoge';
 
 function extractItems() {
   const links = document.querySelectorAll('.title-list-grid__item--link');

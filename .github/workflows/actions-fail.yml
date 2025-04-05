@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  pull_request:
 
 jobs:
   fail-test:
@@ -14,16 +15,27 @@ jobs:
 
       - name: Fetch base branch
         run: git fetch origin master
+      
+      - name: Check for changes
+        id: check
+        run: |
+          git diff --name-only origin/${{ github.base_ref }} -- index.js | grep . || echo "changes=no-changes" >> $GITHUB_OUTPUT
 
       - name: Check exitting by code 1 fails entire job
+        if: ${{ steps.check.outputs.changes != 'no-changes' }}
         run: |
           git diff --name-only origin/master -- index.js | grep . || {
             echo '::notice ::notice'
             echo '::warning ::exit 1, no continue-on-error set'
             echo '::error ::no diff index.js'
+            echo "Changed files: ${{ github.event.pull_request.changed_files }}"
             exit 1
           }
         continue-on-error: true
+
+      - name: Check 2
+        if: ${{ steps.check.outputs.changes != 'no-changes' }}
+        run: echo 'check 2'
 
       - name: Next Step 
         run: echo 'next step'
