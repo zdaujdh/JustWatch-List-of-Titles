@@ -18,9 +18,12 @@ jobs:
       - name: Check exitting by code 1 fails entire job
         run: |
           git diff --name-only origin/master -- index.js | grep . || {
-            echo '::error ::exit 1, no continue-on-error set'
+            echo '::notice ::notice'
+            echo '::warning ::exit 1, no continue-on-error set'
+            echo '::error ::no diff index.js'
             exit 1
           }
+        continue-on-error: true
 
       - name: Next Step 
         run: echo 'next step'
