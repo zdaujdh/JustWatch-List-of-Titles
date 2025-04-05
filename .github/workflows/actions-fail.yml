@@ -19,7 +19,7 @@ jobs:
       - name: Check for changes
         id: check
         run: |
-          git diff --name-only origin/${{ github.base_ref }} | grep . || echo "changes=no-changes" >> $GITHUB_OUTPUT
+          git diff --name-only origin/${{ github.base_ref }} -- index.js | grep . || echo "changes=no-changes" >> $GITHUB_OUTPUT
 
       - name: Check exitting by code 1 fails entire job
         if: ${{ steps.check.outputs.changes != 'no-changes' }}
