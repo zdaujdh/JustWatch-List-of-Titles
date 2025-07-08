@@ -18,7 +18,7 @@
     "cli-progress": "^3.12.0"
   },
   "overrides": {
-    "glob>inflight": "npm:lru-cache@^10.0.0"
+    "inflight": "npm:lru-cache@^10.0.0"
   },
   "engines": {
     "node": ">=16.0.0"
