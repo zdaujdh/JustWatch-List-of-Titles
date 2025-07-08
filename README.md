@@ -1,4 +1,4 @@
-# netflix_list_of_titles
+# JustWatch Trending Netflix TV Shows
 Scrape trending tv titles streamed by Netflix from justwatch.com with Puppeteer
 
 ## Requirement
