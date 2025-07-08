@@ -1,5 +1,5 @@
 # netflix_list_of_titles
-Scrape movie titles streamed in Japan by Netflix from justwatch.com with Puppeteer
+Scrape trending tv titles streamed by Netflix from justwatch.com with Puppeteer
 
 ## Requirement
 Puppeteer needs Node.js >= 6.4.0.
