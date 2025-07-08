@@ -63,7 +63,7 @@ async function autoScroll(page) {
   const thisYear = date.getFullYear();
 
   let titles = [];
-  for (let year = 2022; year <= thisYear; year++) {
+  for (let year = thisYear - 3; year <= thisYear; year++) {
     for (let contentType of contentTypes) {
       for (let genre of genres) {
         await page.goto(
