@@ -38,7 +38,7 @@ async function autoScroll(page) {
     height: 5000,
   });
 
-  const contentTypes = ['movie', 'show'];
+  const contentTypes = ['show'];
   const genres = [
     'act',
     'ani',
@@ -49,7 +49,6 @@ async function autoScroll(page) {
     'eur',
     'fml',
     'fnt',
-    'hrr',
     'hst',
     'msc',
     'rly',
@@ -64,11 +63,11 @@ async function autoScroll(page) {
   const thisYear = date.getFullYear();
 
   let titles = [];
-  for (let year = 1936; year <= thisYear; year++) {
+  for (let year = 2022; year <= thisYear; year++) {
     for (let contentType of contentTypes) {
       for (let genre of genres) {
         await page.goto(
-          `https://www.justwatch.com/jp/動画配信サービス/netflix
+          `https://www.justwatch.com/us/provider/netflix?sort_by=trending_7_day
           ?content_type=${contentType}&genres=${genre}
           &release_year_from=${year}&release_year_until=${year}`
         );
