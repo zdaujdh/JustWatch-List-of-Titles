@@ -1,26 +1,25 @@
 {
   "name": "netflix_list_of_titles",
-  "version": "1.0.0",
-  "description": "Scrape list of trending titles streamed by Netflix from justwatch.com using Puppeteer",
+  "version": "1.1.0",
+  "description": "Scrape list of titles streamed by Netflix Japan from justwatch.com using Puppeteer",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "clean": "node ./scripts/clean-output.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zdaujdh/netflix_list_of_titles.git"
-  },
-  "keywords": [
-    "'puppeteer'",
-    "'netflix'"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zdaujdh/netflix_list_of_titles/issues"
-  },
-  "homepage": "https://github.com/zdaujdh/netflix_list_of_titles#readme",
+  "keywords": ["puppeteer", "netflix", "scraper", "justwatch"],
+  "author": "zdaujdh",
+  "license": "MIT",
   "dependencies": {
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^22.7.1",
+    "csv-writer": "^1.6.0",
+    "node-fetch": "^3.3.2"
+  },
+  "overrides": {
+    "glob>inflight": "npm:lru-cache@^10.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
